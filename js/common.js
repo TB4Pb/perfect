@@ -7,17 +7,17 @@ $.ajax({
         		<div class="msg__body" id="p'+this.id+'">\
         		<div class="msg__userinfo"></div>\
         		<div>'+this.body+'</div>\
-        		<hr></div></div>');
+        		</div></div>');
     	});
 	  }
     });
 
 function showMsg(postId,userId){
-	if ($('#p'+postId).is(":visible")){//just hide block
+	if ($('#p'+postId).is(":visible")){//спрятать блок
 
 		$('#p'+postId).hide();
 
-	}else{//get user data and show block
+	}else{//получаем инфу по юзеру и выводим
 
 	    $.ajax({
 	      url: "https://jsonplaceholder.typicode.com/users/"+userId,
@@ -30,9 +30,9 @@ function showMsg(postId,userId){
 	}
 }
 
-function renderJSON(arr,tmp){
+function renderJSON(arr,tmp){ // мини шаблонизатор для красивого вывода информации
 	var html = '';
-	tmp = (tmp == undefined) ? "<b>{{k}}:</b> {{v}}<br/>" : tmp;
+	tmp = (tmp == undefined) ? "<b>{{k}}:</b> {{v}}<br/>" : tmp;  //{{k}} - ключ масива  {{v}} - значение
 	$.each(arr, function(k,v) {
 		if  (typeof v === 'object')
 			html += renderJSON (v)
@@ -41,8 +41,6 @@ function renderJSON(arr,tmp){
 	});
 	return html;
 }
-
-   
    
    
    
